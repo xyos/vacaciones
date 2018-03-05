@@ -1,4 +1,7 @@
-<h1>Inbox</h1>
+<h3>Solicitudes de vacaciones:</h3>
+<span class="circle new"></span> nuevas({{news}})
+<span class="circle approved"></span> aprobadas({{approved}})
+<span class="circle rejected"></span> rechazadas({{rejected}})
 <ul class="vgrid">
   <li class="cell" *ngFor="let request of requests">
     <vacation-list-item [request]="request"></vacation-list-item>

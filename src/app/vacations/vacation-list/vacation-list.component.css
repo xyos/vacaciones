@@ -1,0 +1,13 @@
+.circle:after {
+  content: ' \25CF';
+  font-size: 1.5rem;
+}
+.circle.new {
+  color: #D2EFFD;
+}
+.circle.approved {
+  color: #65E39F;
+}
+.circle.rejected {
+  color: #FFB3B3;
+}

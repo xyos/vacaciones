@@ -1,14 +1,15 @@
 <div *ngIf="request">
-  <h1>Vacation request#{{request.id}}</h1>
-  {{request.days}}
-  {{request.state}}
-  {{request.initialDate}}
-  <p>{{request.employee.name }}</p>
-  <p>{{request.employee.position}}</p>
-  <p>{{request.employee.lastVacations}}</p>
-  <p *ngIf="!sending">
-    <button (click)="goBack()">Go Back</button>
-    <button (click)="reject()">Reject</button>
-    <button (click)="approve()">Aprove</button>
+  <h1>Solicitud de vacaciones #{{request.id}}</h1>
+  <p class="date">Fecha de inicio: {{request.initialDate}}</p>
+  <p class="state">Estado: {{state}}</p>
+  <p></p>
+  <h4>datos del empleado: </h4>
+  <p>Nombre: {{request.employee.name }}</p>
+  <p>Cargo: {{request.employee.position}}</p>
+  <p>Últimas vacaciones: {{request.employee.lastVacations}}</p>
+  <p>
+    <button (click)="goBack()" [disabled]="sending">Regresar</button>
+    <button class="reject" (click)="reject()" [disabled]="sending">Rechazar</button>
+    <button class="approve" (click)="approve()" [disabled]="sending">Aprobar</button>
   </p>
 </div>

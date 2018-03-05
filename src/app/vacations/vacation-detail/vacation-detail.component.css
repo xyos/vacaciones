@@ -1,0 +1,57 @@
+button {
+  background-color: #64CAFA;
+  border: 0.1rem solid #;
+  border-radius: .4rem;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  height: 2.8rem;
+  letter-spacing: .1rem;
+  line-height: 1.8rem;
+  padding: 0 1.0rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+button:focus,
+button:hover {
+  background-color: #516077;
+  border-color: #64CAFA;
+  color: #fff;
+  outline: 0;
+  opacity: 1;
+}
+
+button[disabled] {
+  cursor: default;
+  opacity: .5;
+}
+
+button[disabled]:focus,
+button[disabled]:hover {
+  background-color: #A6B0BC;
+  border-color: #A6B0BC;
+}
+
+.reject:hover {
+  background-color: #FFB3B3;
+  opacity: .8;
+}
+
+.approve:hover {
+  background-color: #65E39F;
+  opacity: .8;
+}
+.reject {
+  background-color: #FFB3B3;
+  border-color: #FFB3B3;
+}
+
+.approve {
+  background-color: #65E39F;
+  border-color: #DEF6E9;
+}

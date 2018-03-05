@@ -18,6 +18,7 @@ export class VacationDetailComponent implements OnInit {
   @Input() request : VacationRequest;
   private id: number;
   sending = false;
+  state = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +29,11 @@ export class VacationDetailComponent implements OnInit {
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
     this.service.getRequest(this.id)
-      .subscribe(request => this.request = request);
+      .subscribe(request => {
+        this.request = request;
+        this.state = request.state == VacationRequestStatus.New ? 'Nueva' :
+          request.state == VacationRequestStatus.Approved ? 'Aprobada' : 'Rechazada';
+      });
   }
 
   approve() {
@@ -48,14 +53,15 @@ export class VacationDetailComponent implements OnInit {
         this.service.getRequest(this.id)
           .subscribe(request => {
             this.request = request
+            this.state = request.state == VacationRequestStatus.New ? 'Nueva' :
+              request.state == VacationRequestStatus.Approved ? 'Aprobada' : 'Rechazada';
             this.sending = false;
           });
       });
   }
 
   goBack() {
-    console.log("clicked");
-    this.router.navigate(['/requests', {relativeTo: this.route}]);
+    this.router.navigate(['/requests']);
   }
 
 }

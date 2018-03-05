@@ -1,10 +1,8 @@
-<a [routerLink]="['/request', request.id]">
+<a class="vacation-detail-link" [routerLink]="['/request', request.id]">
   <div class="vacation-list-item">
-    {{request.state}}
-    {{request.id}}
-    {{request.employee.name}}
-    {{request.days}} días
-    desde: 
-    {{request.initialDate}}
+    <div class="id">#{{request.id}}</div>
+    <span class="circle" [ngClass]="{'new' : request.state == 0,'approved' : request.state == 1, 'rejected' : request.state == 2}"></span>
+    <div class="name">{{request.employee.name}}</div>
+    <div class="days">{{request.days}} días</div>
   </div>
 </a>
