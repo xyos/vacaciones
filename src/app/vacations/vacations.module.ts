@@ -5,10 +5,13 @@ import { VacationDetailComponent } from './vacation-detail/vacation-detail.compo
 import { VacationsComponent } from './vacations.component';
 import { VacationListItemComponent } from './vacation-list/vacation-list-item.component';
 import { VacationsService } from './shared/vacations.service';
+import { RouterModule, Routes } from '@angular/router';
+import { vacationRoutes } from './vacations.routes';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(vacationRoutes),
   ],
   declarations: [
     VacationListComponent,

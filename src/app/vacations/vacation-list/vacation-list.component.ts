@@ -14,7 +14,6 @@ export class VacationListComponent implements OnInit {
   constructor(private vacationsService: VacationsService) { }
 
   ngOnInit() {
-    console.log(this.vacationsService)
     this.getRequests();
   }
 

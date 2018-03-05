@@ -1,8 +1,10 @@
-<div class="vacation-list-item">
-  {{request.state}}
-  {{request.id}}
-  {{request.employee.name}}
-  {{request.days}} días
-  desde: 
-  {{request.initialDate}}
-</div>
+<a [routerLink]="['/request', request.id]">
+  <div class="vacation-list-item">
+    {{request.state}}
+    {{request.id}}
+    {{request.employee.name}}
+    {{request.days}} días
+    desde: 
+    {{request.initialDate}}
+  </div>
+</a>
