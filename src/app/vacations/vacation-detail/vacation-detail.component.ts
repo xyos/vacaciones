@@ -15,6 +15,7 @@ import { VacationsService } from '../shared/vacations.service';
 export class VacationDetailComponent implements OnInit {
 
   request$ : VacationRequest;
+  sending = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,15 @@ export class VacationDetailComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
     this.service.getRequest(+id)
       .subscribe(request => this.request$ = request);
+  }
+
+  approve() {}
+
+  reject() {}
+
+  goBack() {
+    console.log("clicked");
+    this.router.navigate(['/requests', {relativeTo: this.route}]);
   }
 
 }

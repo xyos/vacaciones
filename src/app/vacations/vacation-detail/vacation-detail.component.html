@@ -1,4 +1,12 @@
-<p>
-  vacation-detail works!
-  {{request$.id}}
+<h1>Vacation request#{{request$.id}}</h1>
+{{request$.days}}
+{{request$.state}}
+{{request$.initialDate}}
+<p>{{request$.employee.name }}</p>
+<p>{{request$.employee.position}}</p>
+<p>{{request$.employee.lastVacations}}</p>
+<p *ngIf="!sending">
+  <button (click)="goBack()">Go Back</button>
+  <button (click)="reject()">Reject</button>
+  <button (click)="approve()">Aprove</button>
 </p>
