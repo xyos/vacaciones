@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { VacationRequest } from '../shared/vacation-request.model';
+import { VacationRequestStatus } from '../shared/vacation-request-status.enum';
 import { VacationsService } from '../shared/vacations.service';
 
 @Component({
@@ -14,7 +15,8 @@ import { VacationsService } from '../shared/vacations.service';
 
 export class VacationDetailComponent implements OnInit {
 
-  request$ : VacationRequest;
+  @Input() request : VacationRequest;
+  private id: number;
   sending = false;
 
   constructor(
@@ -24,14 +26,32 @@ export class VacationDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.service.getRequest(+id)
-      .subscribe(request => this.request$ = request);
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.service.getRequest(this.id)
+      .subscribe(request => this.request = request);
   }
 
-  approve() {}
+  approve() {
+    this.updateRequestStatus(VacationRequestStatus.Approved);
+  }
 
-  reject() {}
+  reject() {
+    this.updateRequestStatus(VacationRequestStatus.Rejected);
+  }
+
+  updateRequestStatus(state: VacationRequestStatus) {
+    this.sending = true;
+    this.request.state = state;
+    this.service.updateRequest(this.request)
+      .subscribe(_ => {
+        // put is returning null on the onmemory HttpService so this is a hack to get the updated VacationRequest
+        this.service.getRequest(this.id)
+          .subscribe(request => {
+            this.request = request
+            this.sending = false;
+          });
+      });
+  }
 
   goBack() {
     console.log("clicked");
