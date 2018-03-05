@@ -5,8 +5,9 @@ import { VacationRequest } from '../shared/vacation-request.model';
 @Component({
   selector: 'app-vacation-list',
   templateUrl: './vacation-list.component.html',
-  styleUrls: ['./vacation-list.component.css']
+  styleUrls: ['./vacation-list.component.css'],
 })
+
 export class VacationListComponent implements OnInit {
   requests: VacationRequest[];
 

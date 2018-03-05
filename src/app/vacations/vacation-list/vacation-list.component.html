@@ -1,7 +1,4 @@
   vacation-list works!
 <ul class="heroes">
-  <li *ngFor="let request of requests">
-    {{request.id}}
-    <app-vacatation-list-item></app-vacatation-list-item>
-  </li>
+  <vacation-list-item *ngFor="let request of requests"></vacation-list-item>
 </ul>

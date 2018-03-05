@@ -10,7 +10,12 @@ import { VacationsService } from './shared/vacations.service';
   imports: [
     CommonModule
   ],
-  declarations: [VacationListComponent, VacationDetailComponent, VacationsComponent, VacationListItemComponent],
+  declarations: [
+    VacationListComponent,
+    VacationDetailComponent,
+    VacationsComponent,
+    VacationListItemComponent,
+  ],
   providers: [
     VacationsService,
   ],
